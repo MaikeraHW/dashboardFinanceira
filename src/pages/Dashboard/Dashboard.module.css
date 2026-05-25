@@ -1,0 +1,102 @@
+.container {
+    width: 90%;
+    max-width: 1200px;
+    min-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #00000055;
+    border-radius: 12px;
+}
+
+.header {
+    padding: 1rem;
+    background: #00000055;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+
+.timerValue {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2563eb;
+    display: block;
+    font-variant-numeric: tabular-nums;
+}
+
+.list {
+    background: #fff;
+    border-radius: 8px;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 460px;
+    overflow-y: auto;
+}
+
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.listItem:last-child {
+    border-bottom: none;
+}
+
+.listItem div:last-child {
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+}
+
+.amount {
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.status {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #e2e8f0;
+}
+
+.deleteBtn {
+    background: #fee2e2;
+    color: #ef4444;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin-left: 10px;
+}
+
+.deleteBtn:hover {
+    background: #fecaca;
+}
+
+/* ABAS */
+.nav {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.navButton {
+    color: white;
+    border: 3px solid #6b6b6b;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    transition: all .2s;
+    border-radius: .25rem;
+    background-color: #282828;
+}
+
+.activeButton {
+    border-color: white;
+}
