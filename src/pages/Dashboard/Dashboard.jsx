@@ -8,9 +8,10 @@ const MOCK_DATA = Array.from({length: 100}, (_, i) => ({
     id: i,
     client: `Cliente ${i + 1}`,
     amount: parseInt(Math.random() * 1000),
-    date: new Date().toLocaleString,
+    date: new Date().toLocaleString(),
     status: Math.random() > 0.5 ? "Concluído" : "Pendente"
 }))
+
 
 function Dashboard(){
 
@@ -24,6 +25,7 @@ function Dashboard(){
             setTimer(new Date().toLocaleTimeString())
         }, 1000)
         return () => { clearInterval(time)}
+        
     })
 
     return (
@@ -38,8 +40,8 @@ function Dashboard(){
             <section>
                 <h2>Últimas transações</h2>
 
-                <TransactionsList />
-                
+                <TransactionsList items={transactions}/>
+
             </section>
         </div>
     )
