@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import TransactionsList from '../../components/transactionsList/TransactionsList'
 
@@ -17,7 +17,7 @@ function Dashboard(){
 
     const [timer, setTimer] = useState(new Date().toLocaleTimeString())
 
-    const transactions = MOCK_DATA
+    const [transactionsItens, setTransactionsItens] = useState(MOCK_DATA)
 
     useEffect(() => {
 
@@ -26,6 +26,15 @@ function Dashboard(){
         }, 1000)
         return () => { clearInterval(time)}
         
+    })
+
+    // function handleDelete(newId){
+    //     setTransactionsItens( prev => prev.filter( i => i.id !== newId))
+    // }
+
+    const handleDelete = useCallback(newId => {
+        if(newId === undefined) return
+        setTransactionsItens( prev => prev.filter( i => i.id !== newId))
     })
 
     return (
@@ -40,7 +49,7 @@ function Dashboard(){
             <section>
                 <h2>Últimas transações</h2>
 
-                <TransactionsList items={transactions}/>
+                <TransactionsList items={transactionsItens} onDelete={handleDelete}/>
 
             </section>
         </div>

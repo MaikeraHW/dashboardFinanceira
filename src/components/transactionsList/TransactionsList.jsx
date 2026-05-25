@@ -1,8 +1,10 @@
+import { memo } from 'react'
+
 import styles from './../../pages/Dashboard/Dashboard.module.css'
 
 
 
-const TransictionItem = ({data}) => {
+const TransictionItem = ({data, onDelete}) => {
     return(
         <li className={styles.listItem}>  
             <div>
@@ -12,17 +14,18 @@ const TransictionItem = ({data}) => {
             <div>
                 <p className={styles.amount}>{data.amount}</p>
                 <p className={styles.status}>{data.status}</p>
+                <button className={styles.deleteBtn} onClick={ () => onDelete(data.id)}>Deletar</button>
             </div>
         </li>
     )
 }
 
 
-const TransactionsList = memo(({items}) => {
+const TransactionsList = memo(({items, onDelete}) => {
     
     return (
         <ul className={styles.list}>
-            {items.map( item => ( <TransictionItem key={item.id} data={item}/>))}
+            {items.map( item => ( <TransictionItem key={item.id} data={item} onDelete={onDelete}/>))}
         </ul>
     )
 })
