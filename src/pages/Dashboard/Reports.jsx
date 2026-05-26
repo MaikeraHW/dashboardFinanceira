@@ -1,7 +1,9 @@
-function Reports(){
+import { memo } from "react"
+
+const Reports = memo(function Reports(){
 
     const processData = () => {
-         return Array.from({length: 100000}, (_, i) => ({
+         return Array.from({length: 50000}, (_, i) => ({
              id: i,
              value: parseInt(Math.random() * 1000),
          }))
@@ -14,6 +16,6 @@ function Reports(){
            
         </div>
     )
-}
+})
 
 export default Reports
