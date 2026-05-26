@@ -4,6 +4,7 @@ import TransactionsList from '../../components/transactionsList/TransactionsList
 
 import styles from './Dashboard.module.css'
 import Timer from './Timer.jsx'
+import TransactionForm from './TransactionForm.jsx'
 const Reports = lazy( () => import('./Reports.jsx') )
 
 const MOCK_DATA = Array.from({length: 100}, (_, i) => ({
@@ -47,6 +48,7 @@ function Dashboard(){
                   <Timer />
                 </div>
             </header>
+            <TransactionForm/>
 
             <section>
                 <nav className={styles.nav}>
