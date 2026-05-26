@@ -4,7 +4,7 @@ import styles from './../../pages/Dashboard/Dashboard.module.css'
 
 
 
-const TransictionItem = ({data, onDelete}) => {
+const TransictionItem = memo(({data, onDelete}) => {
     return(
         <li className={styles.listItem}>  
             <div>
@@ -18,7 +18,7 @@ const TransictionItem = ({data, onDelete}) => {
             </div>
         </li>
     )
-}
+})
 
 
 const TransactionsList = memo(({items, onDelete}) => {

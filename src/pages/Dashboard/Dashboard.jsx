@@ -21,6 +21,9 @@ function Dashboard(){
     const [tab, setTab] = useState("transactions")
     const [isPending, startTransition] = useTransition()
     const [pendingTab, setPendingTab] = useState(null)
+    const [searchTerm, setSearchTerm] = useState('')
+
+    const filtredTransactions = transactionsItens.filter( t => t.client.toLowerCase().includes(searchTerm.toLowerCase()))
 
     
 
@@ -52,7 +55,12 @@ function Dashboard(){
                 </nav>
                 <h2>Últimas transações</h2>
 
-                {tab === "transactions" && <TransactionsList items={transactionsItens} onDelete={handleDelete}/>}
+                {tab === "transactions" && (
+                    <>
+                    <input type="text" value={searchTerm} placeholder='Buscar cliente' onChange={ (e) => setSearchTerm(e.target.value)} />
+                    <TransactionsList items={filtredTransactions} onDelete={handleDelete}/>
+                    </>
+                    )}
 
                 {tab === "reports" && 
                 <Suspense fallback={<p>Carregando lista</p>}>
