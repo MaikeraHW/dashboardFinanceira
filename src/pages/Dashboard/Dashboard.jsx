@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
+import { lazy, useCallback, useEffect, useState } from 'react'
 
 import TransactionsList from '../../components/transactionsList/TransactionsList'
 
 import styles from './Dashboard.module.css'
+const Reports = lazy( () => import('./Reports.jsx') )
 
 const MOCK_DATA = Array.from({length: 100}, (_, i) => ({
     id: i,
@@ -16,8 +17,8 @@ const MOCK_DATA = Array.from({length: 100}, (_, i) => ({
 function Dashboard(){
 
     const [timer, setTimer] = useState(new Date().toLocaleTimeString())
-
     const [transactionsItens, setTransactionsItens] = useState(MOCK_DATA)
+    const [tab, setTab] = useState("transactions")
 
     useEffect(() => {
 
@@ -27,10 +28,6 @@ function Dashboard(){
         return () => { clearInterval(time)}
         
     })
-
-    // function handleDelete(newId){
-    //     setTransactionsItens( prev => prev.filter( i => i.id !== newId))
-    // }
 
     const handleDelete = useCallback(newId => {
         if(newId === undefined) return
@@ -47,11 +44,19 @@ function Dashboard(){
             </header>
 
             <section>
+                <nav className={styles.nav}>
+                    <button className={`${styles.navButton} ${tab === "transactions" ? styles.activeButton : ''}`} onClick={() => setTab("transactions")}> Transactions </button>
+                    <button className={`${styles.navButton} ${tab === "reports" ? styles.activeButton : ''}`} onClick={() => setTab("reports")}> Reports </button>
+                </nav>
                 <h2>Últimas transações</h2>
 
-                <TransactionsList items={transactionsItens} onDelete={handleDelete}/>
+                {tab === "transactions" && <TransactionsList items={transactionsItens} onDelete={handleDelete}/>}
+
+                {tab === "reports" && <Reports />}
+                
 
             </section>
+            
         </div>
     )
 }
