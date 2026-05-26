@@ -1,10 +1,13 @@
 import { lazy, Suspense, useCallback, useEffect, useState, useTransition } from 'react'
 
+import Timer from './Timer.jsx'
+import TransactionForm from './TransactionForm.jsx'
 import TransactionsList from '../../components/transactionsList/TransactionsList'
 
 import styles from './Dashboard.module.css'
-import Timer from './Timer.jsx'
-import TransactionForm from './TransactionForm.jsx'
+
+
+
 const Reports = lazy( () => import('./Reports.jsx') )
 
 const MOCK_DATA = Array.from({length: 100}, (_, i) => ({
