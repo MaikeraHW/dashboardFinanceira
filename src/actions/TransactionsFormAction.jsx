@@ -1,4 +1,4 @@
-export const TransactionsFormAction = (previousState, formData) => {
+export const TransactionsFormAction = async (previousState, formData) => {
     const client = formData.get('client')
     const amount = formData.get('amount')
     const status = formData.get('status')
@@ -16,7 +16,7 @@ export const TransactionsFormAction = (previousState, formData) => {
         return {success: false, error: "O valor precisa ser maior que zero"}
     }
 
-    // await new Promise( resolve =>  setTimeout(resolve, 2000))
+    await new Promise( resolve =>  setTimeout(resolve, 2000))
 
     return {
         success: true,
