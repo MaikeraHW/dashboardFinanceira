@@ -43,6 +43,11 @@ function Dashboard(){
         })
     }
 
+    const handleAddTransaction = (newData) => {
+        setTransactionsItens( prev => [newData, ...prev])
+        console.log(TransactionsList)
+    }
+
     return (
         <div className={styles.container}>
             <header className={styles.header}>
@@ -51,7 +56,7 @@ function Dashboard(){
                   <Timer />
                 </div>
             </header>
-            <TransactionForm/>
+            
 
             <section>
                 <nav className={styles.nav}>
@@ -63,6 +68,7 @@ function Dashboard(){
                 {tab === "transactions" && (
                     <>
                     <input type="text" value={searchTerm} placeholder='Buscar cliente' onChange={ (e) => setSearchTerm(e.target.value)} />
+                    <TransactionForm onAddTransaction={handleAddTransaction}/>
                     <TransactionsList items={filtredTransactions} onDelete={handleDelete}/>
                     </>
                     )}

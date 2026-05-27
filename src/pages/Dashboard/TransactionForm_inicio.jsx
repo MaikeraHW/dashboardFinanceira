@@ -1,8 +1,20 @@
-export default function TransactionForm() {
+import { useActionState } from 'react'
+import { TransactionsFormAction } from './../../actions/TransactionsFormAction'
+
+export default function TransactionForm({onAddTransaction}) {
+
+
+    const [state, formAction, isPending] = useActionState(TransactionsFormAction, {
+        success: false,
+        error: null,
+        newData: null
+    })
+
+
     return (
         <div style={{ marginBottom: '2rem' }}>
 
-            <form action="" style={{ display: 'flex', gap: '.5rem', flexDirection: 'column' }}>
+            <form action={formAction} style={{ display: 'flex', gap: '.5rem', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', gap: '.5rem', justifyContent: 'center', marginTop: '2rem', alignItems: 'center' }}>
                     <p >Adicionar Transacão</p>
                     <div>
